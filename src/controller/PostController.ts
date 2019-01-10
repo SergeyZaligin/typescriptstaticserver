@@ -2,12 +2,6 @@ import { NextFunction, Request, Response, Router } from 'express';
 import { Post } from '../models/Post';
 
 export class PostController {
-  public router: Router;
-
-  constructor() {
-    this.router = Router();
-    this.routes();
-  }
 
   public async all(
     _: Request,
@@ -88,13 +82,5 @@ export class PostController {
     } catch (error) {
       return next(error.message);
     }
-  }
-
-  public routes() {
-    this.router.get('/', this.all);
-    this.router.get('/:slug', this.one);
-    this.router.post('/', this.create);
-    this.router.put('/:slug', this.update);
-    this.router.delete('/:slug', this.delete);
   }
 }

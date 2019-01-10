@@ -30,7 +30,7 @@
     "noUnusedParameters": false,
     "removeComments": true
   },
-  "include": ["src"],
+  "include": ["src", "routes/index.ts"],
   "exclude": [
     "node_modules",
     "build",
