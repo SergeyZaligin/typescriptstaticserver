@@ -8,6 +8,7 @@ import * as hbs from 'hbs';
 import * as helmet from 'helmet';
 import * as mongoose from 'mongoose';
 import * as logger from 'morgan';
+import * as dotenv from 'dotenv';
 
 import { PostController } from './controller/PostController';
 import { UserController } from './controller/UserController';
@@ -15,7 +16,7 @@ import { UserController } from './controller/UserController';
 const postRouter = new PostController();
 const userRouter = new UserController();
 
-hbs.registerPartials(path.join(__dirname, '/views/partials'));
+hbs.registerPartials(path.join(__dirname, '../views/partials'));
 
 class Server {
   public app: express.Application;
@@ -26,13 +27,27 @@ class Server {
     this.routes();
     this.app.set('view engine', 'hbs');
     this.app.set('view options', {
-      layout: 'layouts/layout',
+      layout: 'layouts/layout'
     });
   }
 
   public config(): void {
-    const MONGO_URI: string = 'mongodb://localhost/tes';
-    mongoose.connect(MONGO_URI || process.env.MONGODB_URI);
+    dotenv.config({
+      path: path.join(__dirname, '../.env')
+    });
+    mongoose.set('useCreateIndex', true);
+    console.log('process.env.MONGO_URL', process.env.MONGO_URL);
+    mongoose
+      .connect(
+        process.env.MONGO_URL,
+        {
+          useNewUrlParser: true
+        }
+      )
+      .then(() => {
+        console.log('Connection mongodb success!!!');
+      })
+      .catch((error) => console.log(error));
 
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
@@ -46,11 +61,11 @@ class Server {
       res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
       res.header(
         'Access-Control-Allow-Methods',
-        'GET, POST, PUT, DELETE, OPTIONS',
+        'GET, POST, PUT, DELETE, OPTIONS'
       );
       res.header(
         'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials'
       );
       res.header('Access-Control-Allow-Credentials', 'true');
       next();

@@ -29,7 +29,6 @@
     "no-bitwise": true,
     "no-console": [
       true,
-      "log",
       "error",
       "debug",
       "info",
@@ -57,7 +56,7 @@
       "check-open-brace",
       "check-whitespace"
     ],
-    "ordered-imports": true,
+    "ordered-imports": false,
     "quotemark": [true, "single"],
     "radix": true,
     "semicolon": [true, "always"],
