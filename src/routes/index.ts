@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { PostController } from '../controller/PostController';
 
-export class Routes extends PostController {
+export class Index extends PostController {
 
   public router: Router;
 

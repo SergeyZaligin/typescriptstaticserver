@@ -10,10 +10,9 @@ import * as mongoose from 'mongoose';
 import * as logger from 'morgan';
 import * as dotenv from 'dotenv';
 
-import { PostController } from './controller/PostController';
 import { UserController } from './controller/UserController';
-
-const postRouter = new PostController();
+import { Index } from './routes/index';
+const postRouter = new Index();
 const userRouter = new UserController();
 
 hbs.registerPartials(path.join(__dirname, '../views/partials'));
