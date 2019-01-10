@@ -1,0 +1,36 @@
+<div class="category">
+  <div class="category-header">
+    Категории
+  </div>
+  <nav class="category-navigation">
+    <ul class="category-navigation__list-parent">
+      {{#if partials.categoryListContext}}
+        {{#each partials.categoryListContext}}
+          <li class="category-navigation__item-parent">
+            <a href="#" class="category-navigation__link-parent">
+              <i class="fa fa-plus"></i>
+              {{name}}
+            </a>
+            <ul class="category-navigation__list-child">
+              {{#each subcategories}}
+                <li class="category-navigation__item-child">
+                  <a
+                    href="/category/{{categoryslug}}/{{slug}}"
+                    class="category-navigation__link-child"
+                  >
+                    <i class="fa fa-long-arrow-right"></i>
+                    {{name}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      {{else}}
+        <p class="error">
+          Нет категорий.
+        </p>
+      {{/if}}
+    </ul>
+  </nav>
+</div>

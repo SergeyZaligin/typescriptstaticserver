@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
+import * as path from 'path';
 import * as express from 'express';
 import * as hbs from 'hbs';
 import * as helmet from 'helmet';
@@ -13,6 +14,8 @@ import { UserController } from './controller/UserController';
 
 const postRouter = new PostController();
 const userRouter = new UserController();
+
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 class Server {
   public app: express.Application;
