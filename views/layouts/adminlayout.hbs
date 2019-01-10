@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+  {{> admin/drawer }}
+
+  <div class="admin-page">
+    {{> admin/header }}
+
+    <section class="admin-intro-text">
+        <strong>
+            {{title}}
+        </strong>
+    </section>
+     
+    <div class="admin-page-body">
+      <main class="admin-content" role="main">
+
+        {{{body}}}
+
+      </main>
+      {{> admin/leftsidebar }}
+    </div>
+    {{> admin/footer }}
+  </div>
+  <script src="/bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+  {{> drawer }}
+
+  <div class="page">
+    {{> header }}
+
+    <div class="page-body">
+      <main class="content" role="main">
+
+        {{{body}}}
+
+      </main>
+    </div>
+    {{> footer }}
+  </div>
+  <script src="/bundle.js"></script>
+</body>
+
+</html>
