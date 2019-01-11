@@ -11,8 +11,8 @@ import * as logger from 'morgan';
 import * as dotenv from 'dotenv';
 
 import { UserController } from './controller/UserController';
-import { Index } from './routes/index';
-const postRouter = new Index();
+import { Index } from './routes/Index';
+const indexRouter = new Index();
 const userRouter = new UserController();
 
 hbs.registerPartials(path.join(__dirname, '../views/partials'));
@@ -72,10 +72,7 @@ class Server {
   }
 
   public routes(): void {
-    const router: express.Router = express.Router();
-
-    this.app.use('/', router);
-    this.app.use('/posts', postRouter.router);
+    this.app.use('/', indexRouter.router);
     this.app.use('/users', userRouter.router);
   }
 }
